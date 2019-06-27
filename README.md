@@ -21,8 +21,8 @@ openchat
       └── manifest.json  
     └── src
       └── assets
-        └── fonts
-          Roboto-Light.ttf
+        ├── fonts
+          └── Roboto-Light.ttf
       └── components
         └── layout
           └── container
