@@ -1,0 +1,9 @@
+.heightAdjust{
+    display: flex;
+    flex-direction: column;
+}
+
+.content{
+    background: "#9de1fe";
+    padding: 20px;
+}
