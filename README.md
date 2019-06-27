@@ -11,6 +11,8 @@
 * Material-UI, um componente de interface.
 
 ## Estrutura
+
+```
 openchat
   react
     └── public
@@ -32,3 +34,4 @@ openchat
               └── right-container.jsx
       ├── index.css
       └── index.js
+```
