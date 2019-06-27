@@ -8,4 +8,4 @@
 * Webpack, uma ferramenta de 'build' (não vamos mexer com isso, mas apenas deixar o create-react-app lidar com isso).
 * Jest, uma ferramenta de teste com ênfase no React.
 * React Router v4, a última versão do 'router' mais popular para React.
-* React Storybook, um componente de interface - essa é uma ferramenta chave que irá permitir o CDD (Desenvolvimento Orientado a Componente).
+* Material-UI, um componente de interface.
