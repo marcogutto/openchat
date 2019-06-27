@@ -7,6 +7,17 @@
 * React, uma biblioteca de renderização que você provavelmente já ouviu falar.
 * Bootstrap, um componente de interface.
 
+#### Bootstrap
+A configuração foi feita em src/public/index.html adicionando as configurações:
+```
+/* Na HEAD */
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+/* No fim do BODY */
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+```
+
 ### Backend
 * GraphQL, um framework que vamos utilizar como nossa API
 
@@ -26,9 +37,13 @@ openchat
       └── components
         └── chat
           └── chat-form.jsx
+          └── chat-list.jsx
           └── chat-message.jsx
+        └── container
+          └── container.jsx
         └── login
-          └── login-form.jsx
+          └── login.css
+          └── login.jsx
       ├── index.css
       └── index.js
 ```
