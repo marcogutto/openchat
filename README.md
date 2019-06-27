@@ -9,3 +9,26 @@
 * Jest, uma ferramenta de teste com ênfase no React.
 * React Router v4, a última versão do 'router' mais popular para React.
 * Material-UI, um componente de interface.
+
+## Estrutura
+openchat
+  react
+    └── public
+      ├── favicon.ico
+      ├── index.html
+      └── manifest.json  
+    └── src
+      └── assets
+        └── fonts
+          Roboto-Light.ttf
+      └── components
+        └── layout
+          └── container
+            └── left-container
+              ├── left-container.css
+              └── left-container.jsx
+            └── right-container
+              ├── right-container.css
+              └── right-container.jsx
+      ├── index.css
+      └── index.js
