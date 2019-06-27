@@ -9,17 +9,10 @@
 
 body{
   display: flex;
+  height: 100vh;
   justify-content: center;  
-  color: #ffffff;
+  align-items: center;
+  text-align: center;
+  color: #333;
   background: linear-gradient(to right, rgb(83, 105, 118), rgb(41, 43, 73));
-}
-
-#root{
-  width: 80%;
-  height: 80%;
-}
-
-.fullContainer{
-  display: flex;
-  height: 90vh;
 }

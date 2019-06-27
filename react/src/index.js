@@ -1,26 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {
-    Grid,
-    Card
-  } from "@material-ui/core";
-import LeftContainer from './components/layout/container/left-container/left-container';
-import RightContainer from './components/layout/container/right-container/right-container';
+import Container from './components/container/container'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     
-    <Grid container>
-        <Grid item xs={12}>
-            <Card className="fullContainer">
-                <Grid container>
-                    <LeftContainer />
-                    <RightContainer />
-                </Grid>
-            </Card>
-        </Grid>
-    </Grid>,
+    <Container />,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
