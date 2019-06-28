@@ -51,3 +51,15 @@ A configuração foi feita em react/public/index.html adicionando as configuraç
 ### Backend
 * Express, um framework para o Rest
 * GraphQL, um framework que vamos utilizar como nossa API
+
+#### Estrutura
+
+```
+openchat
+  graphql
+    └── src
+      └── utils
+        └── utils.ts
+      ├── app.ts
+      └── index.ts
+```
