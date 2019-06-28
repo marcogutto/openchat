@@ -56,7 +56,7 @@ A configuração foi feita em react/public/index.html adicionando as configuraç
 
 ```
 openchat
-  graphql
+  graphql-api
     └── src
       └── utils
         └── utils.ts
