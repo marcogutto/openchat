@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Login from '../login/login';
+import Header from '../header/header';
 import ChatMessage from '../chat/chat-message';
 import ChatList from '../chat/chat-list';
 
@@ -18,13 +19,24 @@ export default class ContainerComponent extends Component {
         }
     }
 
+    handleClick = (event) => {
+      this.setState({
+        selectedUser: {id: event.target.getAttribute('id'), username: event.target.getAttribute('value')}
+      });
+      let users = document.querySelectorAll(".user");
+      for(var i=0; i < users.length; i++){
+        users[i].classList.remove('active');
+      }
+      document.getElementById(event.target.getAttribute('id')).classList.add('active');
+    }
+
     login = (event) => {
         
         console.log('logado');
         this.setState({
             isLoggedIn: true,
             currentUser: { 
-                id: 1, username:  document.getElementById('username').value 
+                id: 1, username:  document.getElementById('username_input').value 
             }
         })
                 
@@ -37,18 +49,16 @@ export default class ContainerComponent extends Component {
     render() {
         if(this.state.isLoggedIn){
           return ( 
-            <div className='container'>
-              <div className='breadcrumb'>
-                <h6 className='float-right'> Bem vindo, {this.state.currentUser.username}! 
-                    <button id='login' className='btn btn-primary' onClick={this.logout}>Sair</button>
-                </h6>
-              </div>
-              <div className='row'>
-                <div className='col-md-3'>
-                    <ChatList currentUser={this.state.currentUser} selectedUser={this.state.selectedUser} />
-                </div>
-                <div className='col-md-9'>
-                    <ChatMessage currentUser={this.state.currentUser} selectedUser={this.state.selectedUser} />
+            <div>
+              <Header currentUser={this.state.currentUser}/>
+              <div className='container mt-4'>
+                <div className='row'>
+                  <div className='col-md-3'>
+                      <ChatList currentUser={this.state.currentUser} selectedUser={this.state.selectedUser} handleClick={this.handleClick} />
+                  </div>
+                  <div className='col-md-9'>
+                      <ChatMessage currentUser={this.state.currentUser} selectedUser={this.state.selectedUser} />
+                  </div>
                 </div>
               </div>
             </div>
