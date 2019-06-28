@@ -1,7 +1,7 @@
-### SETUP
+### Configuração
 
-#### WATCH BUILD
+#### Watch Build
 npm run gulp
 
-#### START DEV
+#### Start Dev
 npm run dev
