@@ -31,15 +31,41 @@ export default class ContainerComponent extends Component {
     }
 
     login = (event) => {
-        
-        console.log('logado');
-        this.setState({
-            isLoggedIn: true,
-            currentUser: { 
-                id: 1, username:  document.getElementById('username_input').value 
-            }
-        })
-                
+
+      const url = 'http://localhost:3001/api/';
+      var request = new Request(url, {
+        method: 'POST',
+        body: 'mutation {'+ 
+                'createUser(username:"'+ document.getElementById('username_input').value +'") {'+
+                  'id,'+
+                  'username'+
+                '}'+
+              '}'
+        ,
+        headers: {
+          "Content-type": "application/graphql; charset=UTF-8"
+          },
+      });
+
+      fetch(request)
+      .then(res => res.json())
+      .then(
+        (result) =>
+        {
+          if(result.data.createUser.id)
+          {
+            console.log('logado');
+            this.setState({
+              isLoggedIn: true,
+              currentUser: { id: result.id, username:  document.getElementById('username_input').value }
+            })
+          }
+          else
+          {
+            console.log('erro login')
+          }
+        }
+      )                
     }
 
     logout = (event) => {

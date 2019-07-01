@@ -9,22 +9,38 @@ export default class ChatListComponent extends Component {
         this.currentUser = this.props.currentUser;
 
         this.state = {
-            users: [
-                {
-                  "id": 1,
-                  "username": "marco"
-                },
-                {
-                  "id": 2,
-                  "username": "marcogutto"
-                }
-              ]
+            users: [ ]
         }
 
     }
 
     componentDidMount() {
-    
+        const url = 'http://localhost:3001/api/';
+        var request = new Request(url, {
+            method: 'POST',
+            body: 'query {'+ 
+                    'allUsers {'+
+                    'id,'+
+                    'username'+
+                    '}'+
+                '}'
+            ,
+            headers: {
+            "Content-type": "application/graphql; charset=UTF-8"
+            },
+        });
+
+        fetch(request)
+        .then(res => res.json())
+            .then(
+            (result) =>
+            {
+                console.log(result)
+                this.setState({
+                    users: result.data.allUsers
+                })
+            }
+        )
     }
 
     render() {
