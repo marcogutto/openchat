@@ -51,6 +51,8 @@ A configuração foi feita em react/public/index.html adicionando as configuraç
 ### Backend
 * Express, um framework para o Rest
 * GraphQL, um framework que vamos utilizar como nossa API
+* Sequelize, um ORM (Object-Relational Mapper) para Node.js
+* [PostgreSQL](https://www.postgresql.org/), um SGDB (Sistema Gerenciador de Bancos de Dados) 
 
 #### Estrutura
 
@@ -58,6 +60,19 @@ A configuração foi feita em react/public/index.html adicionando as configuraç
 openchat
   graphql-api
     └── src
+      └── config
+        └── config.json
+      └── graphql
+        └── resources
+          └── user
+            └── user.schema.ts
+        ├── mutations.ts
+        ├── query.ts
+        └── schema.ts
+      └── interfaces
+        ├── BaseModelInterface.ts
+        ├── DbConnectionInterface.ts
+        └── ModelsInterface.ts
       └── utils
         └── utils.ts
       ├── app.ts
