@@ -1,5 +1,5 @@
 const userTypes = `
-    
+
     # User Definition Type
     type User {
         id: ID!,
@@ -9,8 +9,19 @@ const userTypes = `
     input UserCreateInput{
         username: String!
     }
-
-    input UserUpdateInput{
-        username: String!
-    }
 `;
+
+const userQueries = `
+    users(first: Int, offset: Int): [User!]!
+    user(username: String!): User
+`;
+
+const userMutations = `
+    createUser(input: UserCreateInput!): User
+`;
+
+export {
+  userTypes,
+  userQueries,
+  userMutations
+}

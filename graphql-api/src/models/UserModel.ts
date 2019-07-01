@@ -18,7 +18,7 @@ export interface UserModel extends BaseModelInterface, Sequelize.Model<UserInsta
 }
 
 export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes): UserModel => {
-    const User: UserModel = 
+    const User: UserModel =
         sequelize.define('User', {
             id: {
                 type: DataTypes.INTEGER,
@@ -28,7 +28,8 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             },
             username: {
                 type: DataTypes.STRING(120),
-                allowNull: false
+                allowNull: false,
+                unique: true,
             }
         },
         {
