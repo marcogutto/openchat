@@ -19,7 +19,7 @@ export default class ChatListComponent extends Component {
         var request = new Request(url, {
             method: 'POST',
             body: 'query {'+ 
-                    'allUsers {'+
+                    'users {'+
                     'id,'+
                     'username'+
                     '}'+
@@ -37,7 +37,7 @@ export default class ChatListComponent extends Component {
             {
                 console.log(result)
                 this.setState({
-                    users: result.data.allUsers
+                    users: result.data.users
                 })
             }
         )

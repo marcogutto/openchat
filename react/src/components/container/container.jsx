@@ -35,8 +35,8 @@ export default class ContainerComponent extends Component {
       const url = 'http://localhost:3001/api/';
       var request = new Request(url, {
         method: 'POST',
-        body: 'mutation {'+ 
-                'createUser(username:"'+ document.getElementById('username_input').value +'") {'+
+        body: 'query {'+ 
+                'user(username:"'+ document.getElementById('username_input').value +'") {'+
                   'id,'+
                   'username'+
                 '}'+
@@ -52,7 +52,7 @@ export default class ContainerComponent extends Component {
       .then(
         (result) =>
         {
-          if(result.data.createUser.id)
+          if(result.data.user.id)
           {
             console.log('logado');
             this.setState({
@@ -62,7 +62,40 @@ export default class ContainerComponent extends Component {
           }
           else
           {
-            console.log('erro login')
+            const url = 'http://localhost:3001/api/';
+            var request = new Request(url, {
+              method: 'POST',
+              body: 'mutation {'+ 
+                      'createUser(username:"'+ document.getElementById('username_input').value +'") {'+
+                        'id,'+
+                        'username'+
+                      '}'+
+                    '}'
+              ,
+              headers: {
+                "Content-type": "application/graphql; charset=UTF-8"
+                },
+            });
+
+            fetch(request)
+            .then(res => res.json())
+            .then(
+              (result) =>
+              {
+                if(result.data.createUser.id)
+                {
+                  console.log('logado');
+                  this.setState({
+                    isLoggedIn: true,
+                    currentUser: { id: result.id, username:  document.getElementById('username_input').value }
+                  })
+                }
+                else
+                {
+                  console.log('erro login')
+                }
+              }
+            )
           }
         }
       )                

@@ -3,6 +3,7 @@ import { GraphQLResolveInfo } from 'graphql';
 import { UserInstance } from '../../../models/UserModel';
 import { DbConnection } from '../../../interfaces/DbConnectionInterface';
 import { Transaction } from 'sequelize';
+import { handlerError } from '../../../utils/utils';
 
 export const userResolvers = {
 
@@ -12,16 +13,20 @@ export const userResolvers = {
                 .findAll({
                     limit: first,
                     offset: offset
-                });
+                })
+                .catch(handlerError);
       },
-      user: (parent, {id}, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
+      user: (parent, {username}, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
           return db.User
-                .findById(id)
+                .find({
+                    where: {username: username}
+                })
                 .then((user: UserInstance) => {
-                    if(!user) throw new Error(`User with id ${id} not found`);                   
+                    if(!user) throw new Error(`User with username ${username} not found`);                   
 
                     return user;
-                });
+                })
+                .catch(handlerError);
       }
     },
 
@@ -30,7 +35,8 @@ export const userResolvers = {
             return db.sequelize.transaction((t: Transaction) => {
                 return db.User
                     .create(input, {transaction: t});
-            });
+            })
+            .catch(handlerError);
         }
     }
 

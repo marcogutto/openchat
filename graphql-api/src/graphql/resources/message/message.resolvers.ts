@@ -3,30 +3,25 @@ import { GraphQLResolveInfo } from 'graphql';
 import { MessageInstance } from '../../../models/MessageModel';
 import { DbConnection } from '../../../interfaces/DbConnectionInterface';
 import { Transaction } from 'sequelize';
+import { handlerError } from '../../../utils/utils';
 
 export const messageResolvers = {
 
     Message: {
         fromUser: (message, args, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
             return db.User
-                .findById(message.get('fromUser'));
+                .findById(message.get('fromUser'))
+                .catch(handlerError);
         },
 
         toUser: (message, args, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
             return db.User
-                .findById(message.get('toUser'));
+                .findById(message.get('toUser'))
+                .catch(handlerError);
         },
     },
 
     Query:{
-      messages: (parent, { first = 10, offset = 0 }, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
-          return db.Message
-                .findAll({
-                    limit: first,
-                    offset: offset
-                });
-      },
-
       messagesByFromUserAndToUser: (parent, {fromUser, toUser, fisrt = 10, offset = 0}, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
           return db.Message
                 .findAll({
@@ -34,6 +29,7 @@ export const messageResolvers = {
                     limit: fisrt,
                     offset: offset
                 })
+                .catch(handlerError);
                 
       }
     },
@@ -43,7 +39,8 @@ export const messageResolvers = {
             return db.sequelize.transaction((t: Transaction) => {
                 return db.Message
                     .create(input, {transaction: t});
-            });
+            })
+            .catch(handlerError);
         }
     }
 
