@@ -50,7 +50,7 @@ export default class ChatListComponent extends Component {
                 <ul className='list-group text-dark'> 
                     {this.state.users.map((user, index) =>
                         {
-                            if(user.id === this.currentUser.id)
+                            if(user.username === this.currentUser.username)
                             {
                                 return undefined;
                             }

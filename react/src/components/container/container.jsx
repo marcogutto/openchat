@@ -52,7 +52,7 @@ export default class ContainerComponent extends Component {
       .then(
         (result) =>
         {
-          if(result.data.user.id)
+          if(result && result.data.user)
           {
             console.log('logado');
             this.setState({
@@ -66,7 +66,7 @@ export default class ContainerComponent extends Component {
             var request = new Request(url, {
               method: 'POST',
               body: 'mutation {'+ 
-                      'createUser(username:"'+ document.getElementById('username_input').value +'") {'+
+                      'createUser(input: { username:"'+ document.getElementById('username_input').value +'"}) {'+
                         'id,'+
                         'username'+
                       '}'+
