@@ -64,7 +64,11 @@ openchat
         └── config.json
       └── graphql
         └── resources
+          └── message
+            ├── message.resolvers.ts
+            └── message.schema.ts
           └── user
+            ├── user.resolvers.ts
             └── user.schema.ts
         ├── mutations.ts
         ├── query.ts
@@ -73,6 +77,10 @@ openchat
         ├── BaseModelInterface.ts
         ├── DbConnectionInterface.ts
         └── ModelsInterface.ts
+      └── models
+        ├── index.ts
+        ├── MessageModel.ts
+        └── UserModel.ts
       └── utils
         └── utils.ts
       ├── app.ts
