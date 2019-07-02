@@ -13,7 +13,7 @@ const userTypes = `
 
 const userQueries = `
     users(first: Int, offset: Int): [User!]!
-    user(username: String!): User
+    user(id: ID!): User
 `;
 
 const userMutations = `
