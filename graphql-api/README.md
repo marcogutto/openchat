@@ -1,7 +1,7 @@
-### Configuração
+### Comandos
 
-#### Watch Build
+#### Compilação do Projeto
 npm run gulp
 
-#### Start Dev
+#### Start do GraphQL em DEV
 npm run dev
